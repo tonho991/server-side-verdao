@@ -23,12 +23,22 @@ var verdao_lojas_coords = [
     }
 ]
 
-app.use(express.static(__dirname + "/src/"))
+app.use(express.static(__dirname + "/src/"));
+
 app.get("/", (req, res) => {
     res.sendFile(__dirname + "/src/index.html");
 });
 
 app.get("/geolocation/:lat/:log/:accuracy",(req,res) => {
+
+    res.set({
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET",
+    "Access-Control-Allow-Headers": "*",
+    "Access-Control-Max-Age": "86400"
+  });
+
+    
     let coords = {"latitude" : req.params.lat, "longitude" : req.params.log};
     let distances = [];
     const menor_distance_coords = [];
