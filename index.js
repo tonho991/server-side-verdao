@@ -3,7 +3,6 @@ var geolib = require("geolib");
 var cors = require("cors")
 
 var app = express();
-var port = 5050;
 
 app.use(cors());
 
@@ -60,6 +59,6 @@ app.get("/geolocation/:lat/:log/:accuracy", (req, res) => {
         }
     );
 });
-app.listen(port, function () {
+app.listen(5050, function () {
     console.log("[ + ] - servidor rodando.");
 });
