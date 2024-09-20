@@ -28,7 +28,7 @@ app.get("/", (req, res) => {
     res.sendFile(__dirname + "/src/index.html");
 });
 
-app.get("/getDistance/:lat/:log/:accuracy",(req,res) => {
+app.get("/geolocation/:lat/:log/:accuracy",(req,res) => {
     let coords = {"latitude" : req.params.lat, "longitude" : req.params.log};
     let distances = [];
     const menor_distance_coords = [];
