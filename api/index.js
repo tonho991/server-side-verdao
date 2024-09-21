@@ -10,20 +10,24 @@ app.use(cors());
 
 var verdao_lojas_coords = [
     {
-        "latitude": -15.607282,
-        "longitude": -56.119839
+        "latitude": -15.605612584823778,
+        "longitude": -56.11628876051745,
+        "name": "Verdão Materiais - Matriz"
     },
     {
-        "latitude": -15.612847,
-        "longitude": -56.050579
+        "latitude": -15.609524877911431,
+        "longitude": -56.04949021507081,
+        "name": "Verdão Materiais - Santa Cruz"
     },
     {
-        "latitude": -15.592621,
-        "longitude": -56.069962
+        "latitude": -15.566920338538159,
+        "longitude": -56.03143655413928,
+        "name": "Verdão Materiais - CPA"
     },
     {
-        "latitude": -15.612804,
-        "longitude": -56.050461
+        "latitude": -15.614314776847992,
+        "longitude": -56.071561809791945,
+        "name": "Verdão Materiais - Carmindo"
     }
 ]
 
