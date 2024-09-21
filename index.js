@@ -27,7 +27,7 @@ var verdao_lojas_coords = [
 
 app.options("/geolocation/:lat/:log/:accuracy", cors());
 
-app.get("/geolocation/:lat/:log/:accuracy", (req, res) => {
+app.get("/geolocation/:lat/:log/:accuracy", cors(), (req, res) => {
 
     res.set({
         "Access-Control-Allow-Origin": "*",
