@@ -25,6 +25,8 @@ var verdao_lojas_coords = [
     }
 ]
 
+app.options("/geolocation/:lat/:log/:accuracy", cors());
+
 app.get("/geolocation/:lat/:log/:accuracy", (req, res) => {
 
     res.set({
@@ -34,13 +36,11 @@ app.get("/geolocation/:lat/:log/:accuracy", (req, res) => {
         "Access-Control-Max-Age": "86400"
     });
 
-
     let coords = { "latitude": req.params.lat, "longitude": req.params.log };
     let distances = [];
     const menor_distance_coords = [];
     let menor_distancia = 0;
     verdao_lojas_coords.forEach(item => {
-
         distances.push(geolib.getDistance(coords, item, req.params.accuracy) / 1000);
     });
     menor_distancia = distances.reduce((a, b) => Math.min(a, b));
