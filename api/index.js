@@ -4,6 +4,8 @@ var cors = require("cors")
 
 var app = express();
 
+const port = process.env.PORT || 3000;
+
 app.use(cors());
 
 var verdao_lojas_coords = [
@@ -59,6 +61,6 @@ app.get("/geolocation/:lat/:log/:accuracy", cors(), (req, res) => {
         }
     );
 });
-app.listen(5050, function () {
+app.listen(port, function () {
     console.log("[ + ] - servidor rodando.");
 });
