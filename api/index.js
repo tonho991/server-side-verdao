@@ -1,6 +1,15 @@
 var express = require("express");
 var geolib = require("geolib");
 var cors = require("cors")
+const rateLimiter = require("express-rate-limit");
+
+const limiter = rateLimiter({
+  windowsMs: 10 * 60 * 1000,
+  max: 100,
+  message: "So many request"
+});
+
+app.use(limiter);
 
 var app = express();
 
