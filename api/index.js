@@ -5,6 +5,8 @@ const rateLimiter = require("express-rate-limit");
 
 var app = express();
 
+app.use("/comment", require("./comment"));
+
 const limiter = rateLimiter({
   windowsMs: 10 * 60 * 1000,
   max: 100,
