@@ -19,7 +19,7 @@ app.post("/comment", multer.none(), recaptcha.middleware.verify, async (req, res
     return res.send("Falha na validacao do reCAPTCHA.")
   }
 
-  let comments = fs.readFileSync("./comments.json", "UTF-8");
+  let comments = fs.readFileSync(__dirname + "/data/comments.json", "UTF-8");
   comments = JSON.parse(comments);
 
   if (

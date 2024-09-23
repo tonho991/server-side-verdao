@@ -46,8 +46,7 @@ var verdao_lojas_coords = [
 app.options("/geolocation/:lat/:log/:accuracy", cors());
 
 app.get("/app-config", (req, res)=>{
-
-    const app_config = JSON.parse(fs.readFileSync("./data/app_config.json"));
+    const app_config = JSON.parse(fs.readFileSync(__dirname + "/data/app_config.json"));
     
     res.json(app_config);
     
