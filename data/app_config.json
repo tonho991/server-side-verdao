@@ -1,0 +1,23 @@
+{
+  "app_version": "1.0.0",
+  "site_domain": "https://verdao-materiais.vercel.app/",
+  "app_update_link": null,
+  "app_tabs": [
+    {
+      "path": "/index.html",
+      "title": "Início"
+    },
+    {
+      "path": "/calculadora.html",
+      "title": "Lojas por Perto"
+    },
+    {
+      "path": "/lojas-proximas.html",
+      "title": "Calcular Itens"
+    },
+    {
+      "path": "/enviar-comentario.html",
+      "title": "Calcular Itens"
+    }
+  ]
+}

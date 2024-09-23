@@ -2,6 +2,7 @@ var express = require("express");
 var geolib = require("geolib");
 var cors = require("cors")
 const rateLimiter = require("express-rate-limit");
+const fs = require("fs");
 
 var app = express();
 
@@ -43,6 +44,14 @@ var verdao_lojas_coords = [
 ]
 
 app.options("/geolocation/:lat/:log/:accuracy", cors());
+
+app.get("/app-config", (req, res)=>{
+
+    const app_config = JSON.parse(fs.readFileSync("./data/app_config.json"));
+    
+    res.json(app_config);
+    
+});
 
 app.get("/geolocation/:lat/:log/:accuracy", cors(), (req, res) => {
 
