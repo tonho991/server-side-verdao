@@ -63,11 +63,6 @@ app.post("/", multer.none(), recaptcha.middleware.verify, async (req, res) => {
     return res.status(200).send({ success: false, error: "Email inválido." });
   }
 
-  if (!validator.isMobilePhone(telefone, 'pt-BR')) {
-    return res.status(200).send({ success: false, error: "Telefone inválido." });
-  }
-
-
   const text = `
     Olá ${getGreetings()}! Meu nome é ${nome}.
     
