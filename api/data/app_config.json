@@ -1,23 +1,30 @@
 {
-  "app_version": "1.0.0",
   "site_domain": "https://verdao-materiais.vercel.app/",
-  "app_update_link": null,
   "app_tabs": [
     {
       "path": "/index.html",
       "title": "Início"
     },
     {
-      "path": "/calculadora.html",
+      "path": "/lojas-proximas.html",
       "title": "Lojas por Perto"
     },
     {
-      "path": "/lojas-proximas.html",
+      "path": "/calculadora.html",
       "title": "Calcular Itens"
     },
     {
-      "path": "/enviar-comentario.html",
-      "title": "Calcular Itens"
+      "path": "/sobre.html",
+      "title": "Sobre Nós"
+    },
+    {
+      "path": "/politica-de-privacidade.html",
+      "title": "Política de Privacidade"
     }
-  ]
+  ],
+  "app_update": {
+    "app_version": "1.0",
+    "app_update_url": "https://google.com",
+    "update_text": "Atualize agora para a versão mais recente e aproveite:\n• Desempenho aprimorado\n• Novos recursos incríveis\n• Correções de bugs e segurança\n\nMantenha seu app atualizado e tenha a melhor experiência!"
+  }
 }

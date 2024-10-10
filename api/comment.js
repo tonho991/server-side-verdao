@@ -1,11 +1,27 @@
 const express = require("express");
 const app = express.Router();
-const fs = require("fs");
+
+const validator = require("validator");
+const sanitizeHtml = require("sanitize-html")
 const multer = require("multer")();
-const Recaptcha = require("express-recaptcha").RecaptchaV2; 
+
+const Recaptcha = require("express-recaptcha").RecaptchaV2;
 const recaptcha = new Recaptcha("6LfIrRgqAAAAAMWzrrgiW-EeckPfiItlps1-pguX", "6LfIrRgqAAAAAP54V_0Lt9HVBzO8-lfDEYp6UEgm");
 
-app.post("/comment", multer.none(), recaptcha.middleware.verify, async (req, res) => {
+function getGreetings() {
+  let now = new Date();
+  let hour = now.getHours();
+
+  if (hour => 6 && hour < 12) {
+    return "bom dia"
+  } else if (hour >= 12 && hour < 18) {
+    return "boa tarde"
+  } else {
+    return "boa noite"
+  }
+}
+
+app.post("/", multer.none(), recaptcha.middleware.verify, async (req, res) => {
 
   res.set({
     "Access-Control-Allow-Origin": "*",
@@ -16,32 +32,63 @@ app.post("/comment", multer.none(), recaptcha.middleware.verify, async (req, res
 
 
   if (req.recaptcha.error) {
-    return res.send("Falha na validacao do reCAPTCHA.")
+    return res.send({
+      success: false,
+      error: "Recaptcha inválido."
+    })
   }
-
-  let comments = fs.readFileSync(__dirname + "/data/comments.json", "UTF-8");
-  comments = JSON.parse(comments);
 
   if (
     !req.body.nome ||
     !req.body.email ||
     !req.body.telefone ||
     !req.body.assunto ||
-    !req.body.mensagem
+    !req.body.mensagem ||
+    !req.body.departamento
   ) {
-    return res.status(200).send("Preencha todos os campos.")
+    return res.status(200).send({
+      success: false,
+      error: "Preencha todos os campos."
+    })
   }
 
-  const data = req.body;
+  const nome = sanitizeHtml(req.body.nome);
+  const email = sanitizeHtml(req.body.email);
+  const telefone = sanitizeHtml(req.body.telefone);
+  const assunto = sanitizeHtml(req.body.assunto);
+  const mensagem = sanitizeHtml(req.body.mensagem);
+  const departamendo = sanitizeHtml(req.body.departamento);
 
-  for(let i = 0; i < data.length; i++){
-    if(data[i].trim() === "") return res.send("Preencha todos os campos.")
+  if (!validator.isEmail(email)) {
+    return res.status(200).send({ success: false, error: "Email inválido." });
   }
 
-  comments.push(req.body);
-  fs.writeFileSync("./data/comments.json", JSON.stringify(comments, null, 4));
+  if (!validator.isMobilePhone(telefone, 'pt-BR')) {
+    return res.status(200).send({ success: false, error: "Telefone inválido." });
+  }
 
-  res.status(200).send("Comentário enviado com sucesso!");
+
+  const text = `
+    Olá ${getGreetings()}! Meu nome é ${nome}.
+    
+    Meu email é *${email}*.
+
+    Gostaria de falar com o departamendo de *${departamendo}}*.
+    Meu assunto é sobre *${assunto}*.
+
+    *Mensagem*: 
+    
+    ${mensagem}
+
+    `;
+
+  const url = `https://api.whatsapp.com/send?phone=5565993403335&text=${text}`
+
+  res.send({
+    success: true,
+    url
+  })
+
 });
 
 module.exports = app;
