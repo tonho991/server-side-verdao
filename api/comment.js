@@ -54,7 +54,7 @@ app.post("/", multer.none(), recaptcha.middleware.verify, async (req, res) => {
 
   const nome = sanitizeHtml(req.body.nome);
   const email = sanitizeHtml(req.body.email);
-  const telefone = sanitizeHtml(req.body.telefone);
+  const telefone = "+55 " + sanitizeHtml(req.body.telefone);
   const assunto = sanitizeHtml(req.body.assunto);
   const mensagem = sanitizeHtml(req.body.mensagem);
   const departamendo = sanitizeHtml(req.body.departamento);
