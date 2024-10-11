@@ -77,7 +77,7 @@ app.post("/", multer.none(), recaptcha.middleware.verify, async (req, res) => {
 
     `;
 
-  const url = `https://api.whatsapp.com/send?phone=5565993403335&text=${text}`
+  const url = `https://api.whatsapp.com/send?phone=556533141000&text=${text}`
 
   res.send({
     success: true,
