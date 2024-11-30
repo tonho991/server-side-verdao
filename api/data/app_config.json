@@ -2,23 +2,23 @@
   "site_domain": "https://verdao-materiais.vercel.app/",
   "app_tabs": [
     {
-      "path": "/index.html",
+      "path": "/index.html?from=app",
       "title": "Início"
     },
     {
-      "path": "/lojas-proximas.html",
+      "path": "/lojas-proximas.html?from=app",
       "title": "Lojas por Perto"
     },
     {
-      "path": "/calculadora.html",
+      "path": "/calculadora.html?from=app",
       "title": "Calcular Itens"
     },
     {
-      "path": "/sobre.html",
+      "path": "/sobre.html?from=app",
       "title": "Sobre Nós"
     },
     {
-      "path": "/politica-de-privacidade.html",
+      "path": "/politica-de-privacidade.html?from=app",
       "title": "Política de Privacidade"
     }
   ],
